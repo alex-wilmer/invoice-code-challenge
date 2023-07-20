@@ -1,36 +1,34 @@
-# invoice code challenge
+## Usage
 
-## Demos
+Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
 
-- _unstyled_
-- _polished_
+This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
 
-## How To Run This App
+```bash
+$ npm install # or pnpm install or yarn install
+```
 
-- _instructions_
+### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
 
-## Thought Process
+## Available Scripts
 
-- I really want this job. <b>Hit a home run.</b>
-- Identify the most challenging parts of the app. <b>Have a conversation with ChatGPT to narrow down the best solutions</b>
-  - Challenges:
-    - Emails
-    - Deployment
-- Make an unstyled, boring version of the app that functions correctly
-- Package the app in a thematic, polished way--something that Karthik would be happy to put on his app dinner menu at his Michelin star app restaurant
-  - He didn't tell me if he was a Trekky or a Jedi.. do both I guess!
-  - Focus on the webapp version. Not enough time to test mobile.
+In the project directory, you can run:
 
-## Risky Choices
+### `npm run dev` or `npm start`
 
-- Making this repo public. <b>It's too much of a limiting factor to deploy a private repo for a code challenge.</b>
-- Choosing SolidJS over React. <b>SolidJS is better than React in every way. Choosing React honestly seems like a bad business decision without strong arguments for using it besides its overwhelming market share.</b>
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Time Breakdown
+The page will reload if you make edits.<br>
 
-- July 16 - Sunday
-  - 5 minute readthrough of take home github README
-- July 17 - Monday
-  - 30 minutes chat with Karthik
-  - 15 miuntes planning. <b>Measure twice, cut once.</b>
-- July 18 - Work work work
+### `npm run build`
+
+Builds the app for production to the `dist` folder.<br>
+It correctly bundles Solid in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+## Deployment
+
+You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
