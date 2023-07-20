@@ -1,4 +1,9 @@
-# invoice
+# invoice code challenge
+
+## Demos
+
+- _unstyled_
+- _polished_
 
 ## How To Run This App
 
@@ -11,16 +16,15 @@
   - Challenges:
     - Emails
     - Deployment
-- Make an untstyled, boring version of the app that functions correctly
+- Make an unstyled, boring version of the app that functions correctly
 - Package the app in a thematic, polished way--something that Karthik would be happy to put on his app dinner menu at his Michelin star app restaurant
   - He didn't tell me if he was a Trekky or a Jedi.. do both I guess!
   - Focus on the webapp version. Not enough time to test mobile.
 
-## Tech Stack
+## Risky Choices
 
-- I love React... but SolidJS is better & simpler.
-  - Knowledge transfer to SolidJS is a piece of cake, plus the momentum of the Solid community is... solid.
-  - Amazing! SolidJS has [vercel support](https://docs.solidjs.com/guides/how-to-guides/deployment/deploying-to-vercel)
+- Making this repo public. <b>It's too much of a limiting factor to deploy a private repo for a code challenge.</b>
+- Choosing SolidJS over React. <b>SolidJS is better than React in every way. Choosing React honestly seems like a bad business decision without strong arguments for using it besides its overwhelming market share.</b>
 
 ## Time Breakdown
 
