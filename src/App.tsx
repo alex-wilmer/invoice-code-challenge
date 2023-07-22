@@ -5,12 +5,10 @@ import { Button } from "@suid/material";
 const App: Component = () => {
   return (
     <div>
-      <header>
-        <p>So you cant to make an invoice, eh?</p>
-        <A href="/new_invoice">
-          <Button variant="contained">Get Started</Button>
-        </A>
-      </header>
+      <h2>So you want to make an invoice, eh?</h2>
+      <A href="/new_invoice">
+        <Button variant="contained">Get Started</Button>
+      </A>
     </div>
   );
 };
