@@ -1,9 +1,17 @@
 import type { Component } from "solid-js";
-import { For, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Button } from "@suid/material";
 import { Box, Stack, TextField, Fab } from "@suid/material";
+import LineItems from "./LineItems";
 import Footer from "./Footer";
+
+interface LineItem {
+  id: number;
+  workDescription: string;
+  hourlyRate: number;
+  numHours: number;
+}
 
 const lineItem = {
   id: 1,
@@ -12,14 +20,26 @@ const lineItem = {
   numHours: 0,
 };
 
-const [lineItems, setLineitems] = createStore([]);
+const [state, setState] = createStore({});
+const [lineItems, setLineitems] = createStore<LineItem[]>([]);
 const [issueDate, setIssueDate] = createSignal();
+const [dueDate, setDueDate] = createSignal();
+
+const total = () =>
+  lineItems.reduce((acc, x) => {
+    return x.hourlyRate * x.numHours + acc;
+  }, 0);
 
 const NewInvoiceForm: Component = () => {
   return (
     <>
       <Box>
         <h2>New Invoice</h2>
+        <TextField
+          sx={{ flex: 3, mb: 2 }}
+          id="invoiceNumber"
+          label="Invoice #"
+        />
         <Stack
           spacing={2}
           sx={{
@@ -33,12 +53,22 @@ const NewInvoiceForm: Component = () => {
               sx={{ flex: 3 }}
               type="text"
               label="Issue Date"
+              // hack to make the Datepicker UX better
               onFocus={(e) => (e.target.type = "date")}
               onBlur={(e) => (e.target.type = "text")}
               onChange={(_, value) => setIssueDate(value)}
               value={issueDate()}
             />
-            <TextField sx={{ flex: 3 }} id="invoiceNumber" label="Invoice #" />
+            <TextField
+              sx={{ flex: 3 }}
+              type="text"
+              label="Due Date"
+              // hack to make the Datepicker UX better
+              onFocus={(e) => (e.target.type = "date")}
+              onBlur={(e) => (e.target.type = "text")}
+              onChange={(_, value) => setDueDate(value)}
+              value={dueDate()}
+            />
           </Stack>
           <Stack direction="row" spacing={2}>
             <TextField
@@ -60,80 +90,9 @@ const NewInvoiceForm: Component = () => {
             />
           </Stack>
         </Stack>
-        <Stack spacing={2}>
-          <For each={lineItems}>
-            {(item, index) => (
-              <Stack
-                direction="row"
-                spacing={2}
-                alignItems="center"
-                maxWidth="70%"
-              >
-                <Fab size="small" color="secondary">
-                  {index() + 1}
-                </Fab>
-                <TextField
-                  sx={{
-                    flex: 2,
-                  }}
-                  id={`description-${index()}`}
-                  label="Description of work..."
-                  onChange={(_, value) => {
-                    setLineitems(
-                      (lineItem) => lineItem.id === item.id,
-                      "workDescription",
-                      value
-                    );
-                  }}
-                  value={item.workDescription}
-                />
-                <TextField
-                  sx={{
-                    flex: 1,
-                  }}
-                  id={`numhours-${index()}`}
-                  label="# Hours"
-                  onChange={(_, value) => {
-                    setLineitems(
-                      (lineItem) => lineItem.id === item.id,
-                      "numHours",
-                      value
-                    );
-                  }}
-                />
-                <TextField
-                  sx={{
-                    flex: 1,
-                    textAlign: "right",
-                  }}
-                  id={`rate-${index()}`}
-                  label="Hourly Rate"
-                  onChange={(_, value) => {
-                    setLineitems(
-                      (lineItem) => lineItem.id === item.id,
-                      "hourlyRate",
-                      value
-                    );
-                  }}
-                  value={item.hourlyRate}
-                />
-                <TextField
-                  sx={{
-                    flex: 1,
-                  }}
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  id={`total-${index()}`}
-                  label="Total"
-                  value={`$ ${(
-                    parseFloat(item.hourlyRate) * parseFloat(item.numHours)
-                  ).toFixed(2)}`}
-                />
-              </Stack>
-            )}
-          </For>
-        </Stack>
+
+        <LineItems lineItems={lineItems} setLineItems={setLineitems} />
+
         <Button
           variant="contained"
           sx={{
@@ -147,7 +106,7 @@ const NewInvoiceForm: Component = () => {
           Add Line Item
         </Button>
       </Box>
-      <Footer />
+      <Footer total={total} />
     </>
   );
 };
