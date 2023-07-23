@@ -3,6 +3,7 @@ import { createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Button } from "@suid/material";
 import { Box, Stack, TextField, Fab } from "@suid/material";
+import Datepicker from "./Datepicker";
 import LineItems from "./LineItems";
 import Footer from "./Footer";
 
@@ -49,26 +50,12 @@ const NewInvoiceForm: Component = () => {
         >
           <Stack direction="row" spacing={2}>
             <TextField sx={{ flex: 5 }} id="companyName" label="Company Name" />
-            <TextField
-              sx={{ flex: 3 }}
-              type="text"
+            <Datepicker
               label="Issue Date"
-              // hack to make the Datepicker UX better
-              onFocus={(e) => (e.target.type = "date")}
-              onBlur={(e) => (e.target.type = "text")}
-              onChange={(_, value) => setIssueDate(value)}
-              value={issueDate()}
+              value={issueDate}
+              setter={setIssueDate}
             />
-            <TextField
-              sx={{ flex: 3 }}
-              type="text"
-              label="Due Date"
-              // hack to make the Datepicker UX better
-              onFocus={(e) => (e.target.type = "date")}
-              onBlur={(e) => (e.target.type = "text")}
-              onChange={(_, value) => setDueDate(value)}
-              value={dueDate()}
-            />
+            <Datepicker label="Due Date" value={dueDate} setter={setDueDate} />
           </Stack>
           <Stack direction="row" spacing={2}>
             <TextField
@@ -90,9 +77,7 @@ const NewInvoiceForm: Component = () => {
             />
           </Stack>
         </Stack>
-
         <LineItems lineItems={lineItems} setLineItems={setLineitems} />
-
         <Button
           variant="contained"
           sx={{
