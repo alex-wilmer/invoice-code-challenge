@@ -2,6 +2,7 @@ import { createSignal } from "solid-js";
 import { Stack, Box, Button, Modal, Typography } from "@suid/material";
 import { A } from "@solidjs/router";
 import useTheme from "@suid/material/styles/useTheme";
+import { Puff } from "solid-spinner";
 
 export default function ReviewInvoiceModal({
   open,
@@ -57,6 +58,17 @@ export default function ReviewInvoiceModal({
         )}
         {!submitted() && (
           <>
+            {loading() && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 25,
+                  right: 25,
+                }}
+              >
+                <Puff color="blue" />;
+              </Box>
+            )}
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Would you like to submit Invoice # {state.invoiceNumber} to{" "}
               {state.targetEmail} for a total of ${total().toFixed(2)} due on{" "}
@@ -64,7 +76,7 @@ export default function ReviewInvoiceModal({
             </Typography>
             <Stack direction="row" spacing={3} mt={3}>
               <Button onClick={submitInvoice} variant="contained">
-                {loading() ? `Submitting` : `Submit Invoice`}
+                {loading() ? `Submitting...` : `Submit Invoice`}
               </Button>
               <Button onClick={handleClose} variant="contained" color="error">
                 Cancel
