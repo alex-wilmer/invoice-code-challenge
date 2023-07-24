@@ -18,10 +18,12 @@
     "vite-plugin-solid": "^2.7.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@solidjs/router": "^0.8.2",
     "@suid/icons-material": "^0.6.6",
     "@suid/material": "^0.13.2",
     "@suid/vite-plugin": "^0.1.4",
+    "date-fns": "^2.30.0",
     "resend": "^0.17.1",
     "solid-js": "^1.7.6",
     "solid-spinner": "^0.1.9"
