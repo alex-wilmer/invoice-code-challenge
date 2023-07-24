@@ -82,7 +82,7 @@ const Dashboard: Component = () => {
                             addSuffix: true,
                           })}
                         </TableCell>
-                        <TableCell>{item.total}</TableCell>
+                        <TableCell>${item.total}</TableCell>
                         <TableCell>
                           {item.paid ? (
                             <Box color="green">PAID</Box>
