@@ -81,7 +81,15 @@ const NewInvoiceForm: Component = () => {
           }}
         >
           <Stack direction="row" spacing={2}>
-            <TextField sx={{ flex: 5 }} id="companyName" label="Company Name" />
+            <TextField
+              sx={{ flex: 5 }}
+              id="companyName"
+              label="Company Name"
+              value={state.companyName}
+              onChange={(_, value) =>
+                setState(produce((state) => (state.companyName = value)))
+              }
+            />
             <Datepicker
               label="Issue Date"
               value={state.issueDate}
