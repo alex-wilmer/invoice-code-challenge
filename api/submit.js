@@ -7,6 +7,8 @@ export default async function handler(request, response) {
   const { body } = request;
 
   console.log(body);
+  console.log(body.companyName);
+  console.log(`Hi ${body.companyName}`);
 
   try {
     const data = await resend.emails.send({
