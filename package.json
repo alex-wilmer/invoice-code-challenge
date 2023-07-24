@@ -22,6 +22,7 @@
     "@suid/icons-material": "^0.6.6",
     "@suid/material": "^0.13.2",
     "@suid/vite-plugin": "^0.1.4",
+    "resend": "^0.17.1",
     "solid-js": "^1.7.6"
   }
 }

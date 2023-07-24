@@ -2,14 +2,23 @@ import type { Component } from "solid-js";
 import { Box, Stack, Button } from "@suid/material";
 import { createSignal } from "solid-js";
 import ReviewInvoiceModal from "./ReviewInvoiceModal";
+import type { Invoice } from "./NewInvoiceForm";
 
 const [open, setOpen] = createSignal(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
 
-const Footer: Component<{ total: () => number }> = ({ total }) => (
+const Footer: Component<{ total: () => number; state: Invoice }> = ({
+  total,
+  state,
+}) => (
   <>
-    <ReviewInvoiceModal open={open} handleClose={handleClose} />
+    <ReviewInvoiceModal
+      open={open}
+      handleClose={handleClose}
+      state={state}
+      total={total}
+    />
     <Box
       onClick={handleOpen}
       sx={{

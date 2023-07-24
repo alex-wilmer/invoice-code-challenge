@@ -5,6 +5,7 @@ import { Router, Routes, Route } from "@solidjs/router";
 import "./index.css";
 import App from "./App";
 import NewInvoiceForm from "./NewInvoiceForm";
+import Dashboard from "./Dashboard";
 
 const root = document.getElementById("root");
 
@@ -20,6 +21,7 @@ render(
       <Routes>
         <Route path="/" component={App} />
         <Route path="/new_invoice" component={NewInvoiceForm} />
+        <Route path="/dashboard" component={Dashboard} />
       </Routes>
     </Router>
   ),

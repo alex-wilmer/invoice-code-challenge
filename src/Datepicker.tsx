@@ -3,9 +3,9 @@ import { TextField } from "@suid/material";
 
 const Datepicker: Component<{
   label: string;
-  setter: Setter<unknown>;
-  value: Accessor<unknown>;
-}> = ({ label, setter, value }) => (
+  onChange: (_: any, value: any) => void;
+  value: Date | undefined;
+}> = ({ label, onChange, value }) => (
   <TextField
     sx={{ flex: 3 }}
     type="text"
@@ -13,8 +13,8 @@ const Datepicker: Component<{
     // hack to make the Datepicker UX better
     onFocus={(e) => (e.target.type = "date")}
     onBlur={(e) => (e.target.type = "text")}
-    onChange={(_, value) => setter(value)}
-    value={value()}
+    onChange={onChange}
+    value={value}
   />
 );
 

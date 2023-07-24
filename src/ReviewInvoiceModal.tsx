@@ -1,7 +1,12 @@
-import { Box, Button, Modal, Typography } from "@suid/material";
+import { Stack, Box, Button, Modal, Typography } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 
-export default function ReviewInvoiceModal({ open, handleClose }) {
+export default function ReviewInvoiceModal({
+  open,
+  handleClose,
+  state,
+  total,
+}) {
   const theme = useTheme();
 
   return (
@@ -25,11 +30,18 @@ export default function ReviewInvoiceModal({ open, handleClose }) {
         }}
       >
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
+          Would you like to submit Invoice # {state.invoiceNumber} to{" "}
+          {state.targetEmail} for a total of ${total().toFixed(2)} due on{" "}
+          {state.dueDate}?
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <Stack direction="row" spacing={3} mt={3}>
+          <Button onClick={handleClose} variant="contained">
+            Submit Invoice
+          </Button>
+          <Button onClick={handleClose} variant="contained" color="error">
+            Cancel
+          </Button>
+        </Stack>
       </Box>
     </Modal>
   );
