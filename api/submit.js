@@ -1,20 +1,23 @@
 import { Resend } from "resend";
 
 export default async function handler(request, response) {
-  // const resend = new Resend(process.env.RESEND_API_KEY);
+  // use environment variable in production
   const resend = new Resend("re_VaqaoRda_E5ryF33kQGESmRPsj66RJfHu");
+
+  console.log(request.body);
 
   try {
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: "djazium@gmail.com",
-      subject: "Hello World",
-      html: "<p>Congrats on sending your <strong>first email</strong>!</p>",
+      subject: "New Invoice",
+      html: `<p>You can have received a new invoice from Company Name.</p>
+      <p>We don't store these invoices anywhere, so you can't pay them which is good because they're not real invoices anyways!`,
     });
     console.log(data);
   } catch (error) {
     console.error(error);
   }
 
-  return response.send(`Hello world!`);
+  return response.json({ message: `Invoice submitted successfully` });
 }

@@ -9,6 +9,18 @@ export default function ReviewInvoiceModal({
 }) {
   const theme = useTheme();
 
+  async function submitInvoice() {
+    const response = await fetch("/api/submit", {
+      method: "POST",
+      body: JSON.stringify({ ...state, total: total().toFixed(2) }),
+      headers: {
+        accept: "application/json",
+      },
+    });
+
+    console.log(response);
+  }
+
   return (
     <Modal
       open={open()}
@@ -35,7 +47,7 @@ export default function ReviewInvoiceModal({
           {state.dueDate}?
         </Typography>
         <Stack direction="row" spacing={3} mt={3}>
-          <Button onClick={handleClose} variant="contained">
+          <Button onClick={submitInvoice} variant="contained">
             Submit Invoice
           </Button>
           <Button onClick={handleClose} variant="contained" color="error">
