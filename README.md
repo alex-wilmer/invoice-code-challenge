@@ -1,34 +1,50 @@
-## Usage
+# invoice-code-challenge
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+## How To Run This App Locally
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+```
+# install
+npm i
 
-```bash
-$ npm install # or pnpm install or yarn install
+# run (mqke sure you're on the dev branch for local dev)
+git checkout dev
+npm run vercel dev
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+## Thought Process
 
-## Available Scripts
+- I really want this job. <b>Hit a home run.</b>
+- Identify the most challenging parts of the app. <b>Have a conversation with ChatGPT to narrow down the best solutions</b>
+  - Challenges:
+    - Emails
+    - Deployment
 
-In the project directory, you can run:
+## Risks
 
-### `npm run dev` or `npm start`
+- Making this repo public. Deploying a public repo is much more well supported for a small project like this.
+- Choosing SolidJS. It was a good choice in the end.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack
 
-The page will reload if you make edits.<br>
+- I love React... but SolidJS is better & simpler.
+  - Knowledge transfer to SolidJS is a piece of cake, plus the momentum of the Solid community is... solid.
+  - Amazing! SolidJS has [vercel support](https://docs.solidjs.com/guides/how-to-guides/deployment/deploying-to-vercel)
 
-### `npm run build`
+## Time Breakdown
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+- July 16 - Sunday
+  - 5 minute readthrough of take home github README
+- July 17 - Monday
+  - 30 minutes chat with Karthik
+  - 15 miuntes planning. <b>Measure twice, cut once.</b>
+- July 23 - Sunday
+  - 3 hours, Invoice Form
+- July 24 - Monday
+  - 2 hours, Emails + Dashboard
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## What I would do if I had more time
 
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+- Integration / e2e testing (Cypress probably)
+- Invoice slug pages
+- Form validation
+- Mobile friendliness
