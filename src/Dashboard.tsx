@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { createSignal, For } from "solid-js";
 import { A } from "@solidjs/router";
 import { Button, Box, Alert } from "@suid/material";
+import { Puff } from "solid-spinner";
 import {
   Paper,
   Table,
@@ -14,10 +15,12 @@ import {
 import { format, formatDistance, isPast } from "date-fns";
 
 const [invoices, setInvoices] = createSignal([]);
+const [loading, setLoading] = createSignal(true);
 
 async function getInvoices() {
   const data = await fetch("/api/invoices").then((r) => r.json());
   setInvoices(data.invoices);
+  setLoading(false);
 }
 
 const Dashboard: Component = () => {
@@ -39,6 +42,11 @@ const Dashboard: Component = () => {
       </A>
       <div>
         <h2>Your Invoices</h2>
+        {loading() && (
+          <Box>
+            Loading your invoices... <Puff color="blue" />;
+          </Box>
+        )}
         <Box px={5}>
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
