@@ -6,6 +6,8 @@ export default async function handler(request, response) {
 
   const { body } = request;
 
+  console.log(body);
+
   try {
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",
